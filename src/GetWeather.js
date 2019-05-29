@@ -4,18 +4,22 @@ import './style/GetWeather.scss';
 import { Skycons } from './skycons-master/skycons';
 
 class GetWeather extends Component {
-  constructor() {
-    super();
+//   constructor() {
+//     super();
 
-  }
+//   }
 
   componentDidMount() {
     window.addEventListener('load', () => {
         let long;
         let lat;
+        let locationTimeZone = document.querySelector(".location-timezone");
         let temperatureDescription = document.querySelector(".temperature-description");
         let temperatureDegree = document.querySelector(".temperature-degree");
-        let locationTimeZone = document.querySelector(".location-timezone");
+        let temperatureDegreeHigh = document.querySelector(".temperature-degree__high");
+        let temperatureDegreeLow = document.querySelector(".temperature-degree__low");
+        let sunrise = document.querySelector(".sunrise-time");
+        let sunset = document.querySelector(".sunset-time");
     
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position =>{
@@ -33,18 +37,60 @@ class GetWeather extends Component {
                     .then(data => {
                         console.log(data);
                         const { temperature, summary, icon } = data.currently;
+                        const { temperatureHigh, temperatureLow, sunriseTime, sunsetTime } = data.daily.data[0];
+                        // console.log('this is high temp' + temperatureHigh + 'this is low temp' + temperatureLow);
                         // set DOM elements from API
                         // CONVERT FROM FAHRENHEIT TO CELSIUS
                         let celsius = (temperature - 32) * (5 / 9);
+                        let celsiusHigh = (temperatureHigh - 32) * (5 / 9);
+                        let celsiusLow = (temperatureLow - 32) * (5 / 9);
     
-                        temperatureDegree.textContent = Math.floor(celsius) + " Degrees celsius";
-                        temperatureDescription.textContent = summary;
                         locationTimeZone.textContent = data.timezone;
+                        temperatureDescription.textContent = summary;
+                        temperatureDegree.textContent = Math.floor(celsius) + " Degrees celsius";
+
+                        temperatureDegreeHigh.textContent = "High: " + Math.floor(celsiusHigh) + " Degrees celsius";
+                        temperatureDegreeLow.textContent = "Low: " + Math.floor(celsiusLow) + " Degrees celsius";
+                        
+                            // Create a new JavaScript Date object based on the timestamp
+                            // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+                            let dateSunRise = new Date(sunriseTime*1000);
+                            // Hours part from the timestamp
+                            let hoursRise = dateSunRise.getHours();
+                            // Minutes part from the timestamp
+                            let minutesRise = "0" + dateSunRise.getMinutes();
+                            // Seconds part from the timestamp
+                            // var seconds = "0" + dateSunRise.getSeconds();
+
+                            // Will display time in 10:30:23 format
+                            let formattedSunRiseTime = hoursRise + ':' + minutesRise.substr(-2); 
+                            // + ':' + seconds.substr(-2);
+                            
+                            let dateSunSet = new Date(sunsetTime*1000);
+                            // Hours part from the timestamp
+                            let hoursSet = dateSunSet.getHours();
+                            // Minutes part from the timestamp
+                            let minutesSet = "0" + dateSunSet.getMinutes();
+                            // Seconds part from the timestamp
+                            // var seconds = "0" + dateSunRise.getSeconds();
+
+                            // Will display time in 10:30:23 format
+                            let formattedSunSetTime = hoursSet + ':' + minutesSet.substr(-2); 
+                            // + ':' + seconds.substr(-2);
+
+
+
+                        // A UNIX time converter i found online:
+                        // https://www.epochconverter.com/
+
+                        // Collect sunset and sunrise from API
+                        sunrise.textContent = "Sunrise: " + formattedSunRiseTime;
+                        sunset.textContent = "Sunset: " + formattedSunSetTime;
+
     
                         // set icon
                         setIcons(icon, document.querySelector('.icon'));
-    
-                        // Toggle temperature between fahrenheit and celsius
+
                     });
             });
         }
@@ -74,6 +120,14 @@ class GetWeather extends Component {
         <div className="temperature">
             <div className="temperature-description"></div>
             <h2 className="temperature-degree"></h2>
+            <h3 className="temperature-degree__high"></h3>
+            <h3 className="temperature-degree__low"></h3>
+        </div>
+
+        <div className="sunset-sunrise-wrapper">
+            <p className="sunrise-time"></p>
+            <p className="sunset-time"></p>
+
         </div>
       
       </div>
