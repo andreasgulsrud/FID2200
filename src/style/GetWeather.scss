@@ -1,3 +1,4 @@
+@import 'variables';
 
 .get-weather-wrapper {
 
@@ -9,34 +10,58 @@
 
         .location-timezone {
             border: 1px solid blue;
+            text-align: center;
+            font-size: $font-size-l;
         }
 
-    .icon-wrapper {
-        border: 1px solid green;
+    .icon-temperature-container {
+        background-color: yellow;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
     }
 
+    .icon-wrapper {
+        background-color: blue;
+        width: 400px;
+        text-align: center;
+    }
+
+        .icon {
+            border: 1px solid red;
+        }
+
     .temperature {
-        
+        background-color: gray;
+        width: 400px;
+        text-align: center;
     }
 
         .temperature-description {
-            border: 1px solid yellow;
+            border: 1px solid red;
+            font-size: $font-size-m;
         }
 
         .temperature-degree {
             border: 1px solid red;
+            font-size: $font-size-m;
         }
 
         .temperature-degree__high {
             border: 1px solid red;
+            font-size: $font-size-s;
         }
 
         .temperature-degree__low {
             border: 1px solid red;
+            font-size: $font-size-s;
         }
 
     .sunset-sunrise-wrapper {
-        
+        background-color: grey;
+        width: 100vw;
+        text-align: center;
+        font-size: $font-size-s;
     }
 
         .sunrise-time {
@@ -45,4 +70,14 @@
         
         .sunset-time {
             border: 1px solid pink;
+        }
+
+    .tomorrows-summary-wrapper {
+        background-color: grey;
+        text-align: center;
+        font-size: $font-size-s;
+    }
+
+        .tomorrows-summary {
+
         }

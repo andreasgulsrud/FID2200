@@ -20,6 +20,7 @@ class GetWeather extends Component {
         let temperatureDegreeLow = document.querySelector(".temperature-degree__low");
         let sunrise = document.querySelector(".sunrise-time");
         let sunset = document.querySelector(".sunset-time");
+        let tomorrowsSummaryString = document.querySelector(".tomorrows-summary");
     
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position =>{
@@ -38,6 +39,7 @@ class GetWeather extends Component {
                         console.log(data);
                         const { temperature, summary, icon } = data.currently;
                         const { temperatureHigh, temperatureLow, sunriseTime, sunsetTime } = data.daily.data[0];
+                        const tomorrowsSummary = data.daily.data[1].summary;
                         // console.log('this is high temp' + temperatureHigh + 'this is low temp' + temperatureLow);
                         // set DOM elements from API
                         // CONVERT FROM FAHRENHEIT TO CELSIUS
@@ -47,10 +49,10 @@ class GetWeather extends Component {
     
                         locationTimeZone.textContent = data.timezone;
                         temperatureDescription.textContent = summary;
-                        temperatureDegree.textContent = Math.floor(celsius) + " Degrees celsius";
+                        temperatureDegree.textContent = Math.floor(celsius) + " C°";
 
-                        temperatureDegreeHigh.textContent = "High: " + Math.floor(celsiusHigh) + " Degrees celsius";
-                        temperatureDegreeLow.textContent = "Low: " + Math.floor(celsiusLow) + " Degrees celsius";
+                        temperatureDegreeHigh.textContent = "High: " + Math.floor(celsiusHigh) + " C°";
+                        temperatureDegreeLow.textContent = "Low: " + Math.floor(celsiusLow) + " C°";
                         
                             // Create a new JavaScript Date object based on the timestamp
                             // multiplied by 1000 so that the argument is in milliseconds, not seconds.
@@ -87,6 +89,9 @@ class GetWeather extends Component {
                         sunrise.textContent = "Sunrise: " + formattedSunRiseTime;
                         sunset.textContent = "Sunset: " + formattedSunSetTime;
 
+                        // display the summary of tomorrow
+                        tomorrowsSummaryString.textContent = "Tomorrow: " + tomorrowsSummary;
+
     
                         // set icon
                         setIcons(icon, document.querySelector('.icon'));
@@ -113,21 +118,28 @@ class GetWeather extends Component {
             <h1 className="location-timezone"></h1>
         </div>
 
-        <div className="icon-wrapper">
-            <canvas className="icon" width="128" height="128"></canvas>
-        </div>
+        <div className="icon-temperature-container">
 
-        <div className="temperature">
-            <div className="temperature-description"></div>
-            <h2 className="temperature-degree"></h2>
-            <h3 className="temperature-degree__high"></h3>
-            <h3 className="temperature-degree__low"></h3>
+            <div className="temperature">
+                <div className="temperature-description"></div>
+                <h2 className="temperature-degree"></h2>
+                <h3 className="temperature-degree__high"></h3>
+                <h3 className="temperature-degree__low"></h3>
+            </div>
+
+            <div className="icon-wrapper">
+                <canvas className="icon" width="220" height="220"></canvas>
+            </div>
+            
         </div>
 
         <div className="sunset-sunrise-wrapper">
             <p className="sunrise-time"></p>
             <p className="sunset-time"></p>
+        </div>
 
+        <div className="tomorrows-summary-wrapper">
+            <p className="tomorrows-summary"></p>
         </div>
       
       </div>
