@@ -1,5 +1,5 @@
 .footer-wrapper {
-    background-color: grey;
+    background-color: black;
     position: absolute;
     bottom: 0;
     width: 100vw;
@@ -7,9 +7,10 @@
 
 .footer-text {
     text-align: center;
+    color: white;
 }
 
 .footer-text__hyperlink {
     text-decoration: none;
-    color: black;
+    color: white;
 }

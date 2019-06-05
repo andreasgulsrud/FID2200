@@ -1,79 +1,100 @@
 @import 'variables';
 
 .get-weather-wrapper {
-
+    font-weight: $font-weight-light;
+    color: $color-white;
 }
 
-    .location {
-        border: 1px solid red;
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -100;
     }
 
-        .location-timezone {
-            border: 1px solid blue;
-            text-align: center;
-            font-size: $font-size-l;
-        }
+    .location {
+        // border: 1px solid red;
+    }
+    
+    .location-timezone {
+        // border: 1px solid blue;
+        
+        text-align: center;
+        font-size: $font-size-l;
+        font-weight: $font-weight-light;
+        margin: 0 0 50px 0;
+    }
 
     .icon-temperature-container {
-        background-color: yellow;
+        // background-color: yellow;
         display: flex;
         flex-direction: row;
         justify-content: center;
     }
 
     .icon-wrapper {
-        background-color: blue;
+        // background-color: blue;
         width: 400px;
         text-align: center;
     }
 
         .icon {
-            border: 1px solid red;
+            
         }
 
     .temperature {
-        background-color: gray;
+        // background-color: gray;
         width: 400px;
         text-align: center;
     }
 
-        .temperature-description {
-            border: 1px solid red;
+        .temperature-current__summary {
+            // border: 1px solid red;
             font-size: $font-size-m;
         }
 
         .temperature-degree {
-            border: 1px solid red;
-            font-size: $font-size-m;
+            // border: 1px solid red;
+            font-size: $font-size-xl;
+            font-weight: $font-weight-light;
+            margin: 0;
         }
 
         .temperature-degree__high {
-            border: 1px solid red;
+            // border: 1px solid red;
             font-size: $font-size-s;
+            font-weight: $font-weight-light;
+            margin-bottom: 0;
         }
 
         .temperature-degree__low {
-            border: 1px solid red;
+            // border: 1px solid red;
             font-size: $font-size-s;
+            font-weight: $font-weight-light;
+            margin-top: 0;
         }
 
     .sunset-sunrise-wrapper {
-        background-color: grey;
+        // background-color: grey;
         width: 100vw;
         text-align: center;
         font-size: $font-size-s;
     }
 
         .sunrise-time {
-            border: 1px solid pink;
+            // border: 1px solid pink;
+            margin-bottom: 0;
         }
         
         .sunset-time {
-            border: 1px solid pink;
+            // border: 1px solid pink;
+            margin-top: 0;
         }
 
     .tomorrows-summary-wrapper {
-        background-color: grey;
+        // background-color: grey;
         text-align: center;
         font-size: $font-size-s;
     }

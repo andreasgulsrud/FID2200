@@ -1,20 +1,28 @@
 import React, { Component } from "react";
-
-import './style/GetWeather.scss';
 import { Skycons } from './skycons-master/skycons';
 
-class GetWeather extends Component {
-//   constructor() {
-//     super();
+import bgRainy from './images/rainy.jpg';
+import bgSunny from './images/sunny.jpg';
+import bgCloudy from './images/cloudy.jpg';
+import bgSnowy from './images/snowy.jpg';
+import bgWindy from './images/windy.jpg';
 
-//   }
+import './style/GetWeather.scss';
+
+class GetWeather extends Component {
+  constructor() {
+    super();
+    // this.state = {
+    //     backgroundImage: null
+    // }
+  }
 
   componentDidMount() {
     window.addEventListener('load', () => {
         let long;
         let lat;
         let locationTimeZone = document.querySelector(".location-timezone");
-        let temperatureDescription = document.querySelector(".temperature-description");
+        let temperatureCurrent__summary = document.querySelector(".temperature-current__summary");
         let temperatureDegree = document.querySelector(".temperature-degree");
         let temperatureDegreeHigh = document.querySelector(".temperature-degree__high");
         let temperatureDegreeLow = document.querySelector(".temperature-degree__low");
@@ -48,7 +56,7 @@ class GetWeather extends Component {
                         let celsiusLow = (temperatureLow - 32) * (5 / 9);
     
                         locationTimeZone.textContent = data.timezone;
-                        temperatureDescription.textContent = summary;
+                        temperatureCurrent__summary.textContent = summary;
                         temperatureDegree.textContent = Math.floor(celsius) + " C°";
 
                         temperatureDegreeHigh.textContent = "High: " + Math.floor(celsiusHigh) + " C°";
@@ -101,11 +109,20 @@ class GetWeather extends Component {
         }
     
         function setIcons(icon, iconID) {
-            const skycons = new Skycons({color: "red"});
+            const skycons = new Skycons({color: "white"});
             const currentIcon = icon.replace(/-/g, "_").toUpperCase();
             skycons.play();
             return skycons.set(iconID, Skycons[currentIcon]);
         }
+
+        // function setBackground(icon) {
+        //     let backgroundImage = [];
+        //     if (icon === "partly-cloudy-day") {
+        //         backgroundImage = bgRainy;
+        //     }
+        // }
+        // setBackground();
+
     });
   }
 
@@ -113,6 +130,8 @@ class GetWeather extends Component {
 
     return(
       <div className="get-weather-wrapper">
+          
+        <img className="background-image" src={bgSunny} alt="background" />
         
         <div className="location">
             <h1 className="location-timezone"></h1>
@@ -121,7 +140,7 @@ class GetWeather extends Component {
         <div className="icon-temperature-container">
 
             <div className="temperature">
-                <div className="temperature-description"></div>
+                <div className="temperature-current__summary"></div>
                 <h2 className="temperature-degree"></h2>
                 <h3 className="temperature-degree__high"></h3>
                 <h3 className="temperature-degree__low"></h3>
@@ -130,7 +149,7 @@ class GetWeather extends Component {
             <div className="icon-wrapper">
                 <canvas className="icon" width="220" height="220"></canvas>
             </div>
-            
+
         </div>
 
         <div className="sunset-sunrise-wrapper">
