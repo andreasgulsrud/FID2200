@@ -13,7 +13,7 @@ class Heading extends Component {
 
     return(
       <div className="heading-wrapper">
-          <h1 className="heading">w e t t</h1>
+          <h1 className="heading">wett</h1>
       </div>
     )
   }

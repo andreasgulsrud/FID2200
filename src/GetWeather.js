@@ -29,9 +29,10 @@ class GetWeather extends Component {
         let sunrise = document.querySelector(".sunrise-time");
         let sunset = document.querySelector(".sunset-time");
         let tomorrowsSummaryString = document.querySelector(".tomorrows-summary");
+        // let backgroundImage = document.querySelector(".background-image");
     
         if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position =>{
+            navigator.geolocation.getCurrentPosition(position => {
                 // console.log(position);
                 long = position.coords.longitude;
                 lat = position.coords.latitude;
@@ -45,9 +46,10 @@ class GetWeather extends Component {
                     })
                     .then(data => {
                         console.log(data);
-                        const { temperature, summary, icon } = data.currently;
+                        let { temperature, summary, icon } = data.currently;
                         const { temperatureHigh, temperatureLow, sunriseTime, sunsetTime } = data.daily.data[0];
                         const tomorrowsSummary = data.daily.data[1].summary;
+                        
                         // console.log('this is high temp' + temperatureHigh + 'this is low temp' + temperatureLow);
                         // set DOM elements from API
                         // CONVERT FROM FAHRENHEIT TO CELSIUS
@@ -104,6 +106,7 @@ class GetWeather extends Component {
                         // set icon
                         setIcons(icon, document.querySelector('.icon'));
 
+                        console.log(icon);
                     });
             });
         }
@@ -113,25 +116,20 @@ class GetWeather extends Component {
             const currentIcon = icon.replace(/-/g, "_").toUpperCase();
             skycons.play();
             return skycons.set(iconID, Skycons[currentIcon]);
+            
         }
 
-        // function setBackground(icon) {
-        //     let backgroundImage = [];
-        //     if (icon === "partly-cloudy-day") {
-        //         backgroundImage = bgRainy;
-        //     }
-        // }
-        // setBackground();
 
     });
   }
 
   render() {
 
+
     return(
       <div className="get-weather-wrapper">
           
-        <img className="background-image" src={bgSunny} alt="background" />
+        <img className="background-image" src={bgRainy} alt="background" />
         
         <div className="location">
             <h1 className="location-timezone"></h1>
