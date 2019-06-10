@@ -16,34 +16,54 @@
 
     .location {
         // border: 1px solid red;
+        
     }
     
     .location-timezone {
         // border: 1px solid blue;
-        
         text-align: center;
         font-size: $font-size-l;
         font-weight: $font-weight-light;
         margin: 0 0 50px 0;
+        @media only screen and (max-width: $break-point-l) {
+            margin: 0 0 10px 0;
+        }
+        @media only screen and (max-width: $break-point-m) {
+            margin: 0 0 50px 0;
+        }
+        @media only screen and (max-width: $break-point-s) {
+            margin: 0 0 10px 0;
+            font-size: $font-size-m;
+        }
     }
 
     .icon-temperature-container {
-        // background-color: yellow;
+        // background-color: blue;
         display: flex;
         flex-direction: row;
         justify-content: center;
+        overflow: hidden;
+        @media only screen and (max-width: $break-point-m) {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
     }
 
     .icon-wrapper {
         // background-color: blue;
         width: 400px;
         text-align: center;
+        @media only screen and (max-width: $break-point-s) {
+            max-width: 100vw;
+        }
     }
 
         .icon {
             // border: 1px solid red;
-            // width: 300px;
-            // height: 300px;
+            @media only screen and (max-width: $break-point-s) {
+                height: 150px;
+                width: 150px;
+            }
         }
 
     .temperature {
@@ -55,6 +75,9 @@
         .temperature-current__summary {
             // border: 1px solid red;
             font-size: $font-size-m;
+            @media only screen and (max-width: $break-point-s) {
+                // max-width: 100vw;
+            }
         }
 
         .temperature-degree {
@@ -69,6 +92,9 @@
             font-size: $font-size-s;
             font-weight: $font-weight-light;
             margin-bottom: 0;
+            @media only screen and (max-width: $break-point-s) {
+                font-size: $font-size-xs;
+            }
         }
 
         .temperature-degree__low {
@@ -76,6 +102,9 @@
             font-size: $font-size-s;
             font-weight: $font-weight-light;
             margin-top: 0;
+            @media only screen and (max-width: $break-point-s) {
+                font-size: $font-size-xs;
+            }
         }
 
     .sunset-sunrise-wrapper {
@@ -83,11 +112,17 @@
         width: 100vw;
         text-align: center;
         font-size: $font-size-s;
+        @media only screen and (max-width: $break-point-s) {
+            font-size: $font-size-xs;
+        }
     }
 
         .sunrise-time {
             // border: 1px solid pink;
             margin-bottom: 0;
+            @media only screen and (max-width: $break-point-m) {
+                margin-top: 0;
+            }
         }
         
         .sunset-time {
@@ -99,6 +134,10 @@
         // background-color: grey;
         text-align: center;
         font-size: $font-size-s;
+        @media only screen and (max-width: $break-point-s) {
+            font-size: $font-size-xs;
+            margin-top: 50px;
+        }
     }
 
         .tomorrows-summary {

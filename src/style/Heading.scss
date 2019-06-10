@@ -1,7 +1,7 @@
 @import 'variables';
 
 .heading-wrapper {
-   
+
 }
 
     .heading {
@@ -11,4 +11,7 @@
         margin: 0;
         padding: 0;
         text-align: center;
+            @media only screen and (max-width: $break-point-s) {
+                font-size: $font-size-xl;
+            }
     }

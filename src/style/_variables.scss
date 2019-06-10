@@ -4,7 +4,7 @@ $font-size-xl: 80px;
 $font-size-l: 45px;
 $font-size-m: 36px;
 $font-size-s: 24px;
-$font-size-xs: 16px;
+$font-size-xs: 20px;
 
 // Font-weights
 $font-weight-thin: 100;
@@ -17,9 +17,9 @@ $color-white: #ffffff;
 $color-heading: #ffffff5d;
 
 // Breakpoints
-$break-point-xl: 1200px;
-$break-point-l: 1024px;
+// laptop 13"
+$break-point-l: 1440px;
+// iPad
 $break-point-m: 768px;
-$break-point-ms: 560px;
-$break-point-s: 480px;
-$break-point-xs: 375px;
+// iPhone X
+$break-point-s: 375px;
