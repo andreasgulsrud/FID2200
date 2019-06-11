@@ -1,14 +1,13 @@
+// FID2200: 28.05.19 - 13.06.19
+// STUDENTNR.: 984112
+// KANDIDATNR.: 600023
+
 import React, { Component } from "react";
 
 import './style/Footer.scss';
 
-
 class Footer extends Component {
-//   constructor() {
-//     super();
-
-//   }
-
+  
   render() {
 
     return(
