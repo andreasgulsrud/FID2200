@@ -96,7 +96,7 @@ class GetWeather extends Component {
         }
     
         function setIcons(icon, iconID) {
-            const skycons = new Skycons({color: "#FFFFFF"});
+            const skycons = new Skycons({color: "#31E5B5"});
             // REPLACE "-" WITH "_" AND SET UPPER CASE TO MATCH SKYCONS WITH DARK SKY API'S ICON NAMES
             const currentIcon = icon.replace(/-/g, "_").toUpperCase();
             // ANIMATE ICONS
