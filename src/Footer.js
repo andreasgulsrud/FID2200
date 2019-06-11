@@ -11,12 +11,12 @@ class Footer extends Component {
   render() {
 
     return(
-      <div className="footer-wrapper">
+      <footer className="footer-wrapper">
         <p className="footer-text">
             Created with <span>❤️</span> and React. Powered by 
                 <a className="footer-text__hyperlink" href='https://darksky.net/forecast/59.9133,10.739/us12/en'> Dark Sky.</a>
         </p>
-      </div>
+      </footer>
     )
   }
 }

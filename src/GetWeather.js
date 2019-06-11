@@ -110,31 +110,31 @@ class GetWeather extends Component {
   render() {
 
     return(
-      <div className="get-weather-wrapper">
-        <div className="location">
-            <h1 className="location-timezone"></h1>
-        </div>
-        <div className="icon-temperature-container">
+      <main className="get-weather-wrapper">
+        <section className="location">
+            <h1 className="location-timezone">timezone</h1>
+        </section>
+        <section className="icon-temperature-container">
             <div className="temperature">
                 <div className="temperature-current">
                     <div className="temperature-current__summary"></div>
-                    <h2 className="temperature-current__degree"></h2>
+                    <h2 className="temperature-current__degree">X C°</h2>
                 </div>
-                <h3 className="temperature-degree__high"></h3>
-                <h3 className="temperature-degree__low"></h3>
+                <h3 className="temperature-degree__high">high C°</h3>
+                <h3 className="temperature-degree__low">low C°</h3>
             </div>
             <div className="icon-wrapper">
                 <canvas className="icon" width="220" height="220"></canvas>
             </div>
-        </div>
-        <div className="sunset-sunrise-wrapper">
+        </section>
+        <section className="sunset-sunrise-wrapper">
             <p className="sunrise-time"></p>
             <p className="sunset-time"></p>
-        </div>
-        <div className="tomorrows-summary-wrapper">
+        </section>
+        <section className="tomorrows-summary-wrapper">
             <p className="tomorrows-summary"></p>
-        </div>
-      </div>
+        </section>
+      </main>
     )
   }
 }

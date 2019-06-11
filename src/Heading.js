@@ -11,9 +11,9 @@ class Heading extends Component {
   render() {
 
     return(
-      <div className="heading-wrapper">
+      <header className="heading-wrapper">
           <h1 className="heading">wett</h1>
-      </div>
+      </header>
     )
   }
 }
